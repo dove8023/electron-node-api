@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+        <meta
+            http-equiv="Content-Security-Policy"
+            content="default-src 'self'; script-src 'self'"
+        />
+        <meta
+            http-equiv="X-Content-Security-Policy"
+            content="default-src 'self'; script-src 'self'"
+        />
+        <title>Hello World!</title>
+    </head>
+    <body>
+        <h1>Hello World!2222444444444</h1>
+        We are using Node.js <span id="node-version"></span>, Chromium
+        <span id="chrome-version"></span>, and Electron
+        <span id="electron-version"></span>.
+        <h1>在使用该系统时，请不要关闭这个窗口</h1>
+        <!-- You can also require other files to run in this process -->
+        <script src="./renderer.js"></script>
+    </body>
+</html>
