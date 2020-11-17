@@ -1,20 +1,19 @@
 {
-  "name": "electron-quick-start",
+  "name": "electron-node-api",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "GS using for the login system.",
   "main": "main.js",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make"
   },
-  "repository": "https://github.com/electron/electron-quick-start",
+  "repository": " ",
   "keywords": [
     "Electron",
     "quick",
     "start",
-    "tutorial",
-    "demo"
+    "tutorial"
   ],
   "author": "GitHub",
   "license": "CC0-1.0",
@@ -27,7 +26,8 @@
     "electron": "^10.1.5"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "http-proxy": "^1.18.1"
   },
   "config": {
     "forge": {
@@ -36,7 +36,7 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "electron_quick_start"
+            "name": "gs-login-system"
           }
         },
         {
