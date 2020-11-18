@@ -1,6 +1,7 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow } = require("electron");
 const path = require("path");
+const { createServer } = require("./server");
 
 function createWindow() {
     // Create the browser window.
@@ -26,7 +27,8 @@ const fs = require("fs");
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
     createWindow();
-    console.log(root);
+
+    createServer();
 
     app.on("activate", function () {
         console.log("yes, activate");

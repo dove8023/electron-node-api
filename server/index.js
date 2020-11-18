@@ -12,7 +12,7 @@ const createServer = async () => {
     // 创建poxy代理
     let proxy = httpProxy.createProxyServer({
         headers: {
-            blockChainAuthentication: "dkdkdkdkdkddkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkd"
+            blockChainAuth: "dkdkdkdkdkddkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkd"
         }
     });
 
@@ -37,4 +37,6 @@ const createServer = async () => {
     });
 }
 
-createServer();
+module.exports = {
+    createServer
+}
