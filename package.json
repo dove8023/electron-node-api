@@ -1,63 +1,80 @@
 {
-  "name": "electron-node-api",
-  "version": "1.0.0",
-  "description": "GS using for the login system.",
-  "main": "main.js",
-  "scripts": {
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder",
-    "postinstall": "electron-builder install-app-deps"
-  },
-  "repository": " ",
-  "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial"
-  ],
-  "author": "GitHub",
-  "license": "CC0-1.0",
-  "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.54",
-    "@electron-forge/maker-deb": "^6.0.0-beta.54",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
-    "@electron-forge/maker-zip": "^6.0.0-beta.54",
-    "electron": "^10.1.5",
-    "electron-builder": "^22.9.1"
-  },
-  "dependencies": {
-    "electron-squirrel-startup": "^1.0.0",
-    "http-proxy": "^1.18.1"
-  },
-  "config": {
-    "forge": {
-      "packagerConfig": {},
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "gs-login-system"
-          }
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
-        }
-      ]
-    }
-  }
+	"name": "gs-app",
+	"version": "1.0.0",
+	"description": "GS using for the login system.",
+	"main": "main.js",
+	"scripts": {
+		"start": "electron-forge start",
+		"package": "electron-forge package",
+		"make": "electron-forge make",
+		"pack": "electron-builder --dir",
+		"dist": "electron-builder",
+		"postinstall": "electron-builder install-app-deps"
+	},
+	"repository": " ",
+	"keywords": [
+		"Electron",
+		"quick",
+		"start",
+		"tutorial"
+	],
+	"author": "GitHub",
+	"license": "CC0-1.0",
+	"devDependencies": {
+		"@electron-forge/cli": "^6.0.0-beta.54",
+		"@electron-forge/maker-deb": "^6.0.0-beta.54",
+		"@electron-forge/maker-rpm": "^6.0.0-beta.54",
+		"@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+		"@electron-forge/maker-zip": "^6.0.0-beta.54",
+		"electron": "^10.1.5",
+		"electron-builder": "^22.9.1"
+	},
+	"dependencies": {
+		"electron-squirrel-startup": "^1.0.0",
+		"http-proxy": "^1.18.1"
+	},
+	"config": {
+		"forge": {
+			"packagerConfig": {},
+			"makers": [
+				{
+					"name": "@electron-forge/maker-squirrel",
+					"config": {
+						"name": "gs-login-system"
+					}
+				},
+				{
+					"name": "@electron-forge/maker-zip",
+					"platforms": [
+						"darwin"
+					]
+				},
+				{
+					"name": "@electron-forge/maker-deb",
+					"config": {}
+				},
+				{
+					"name": "@electron-forge/maker-rpm",
+					"config": {}
+				}
+			]
+		}
+	},
+	"build": {
+		"win": {
+			"target": "nsis",
+			"extraResources": {
+				"from": "./config.json",
+				"to": "./config.json"
+			}
+		}
+	},
+	"nsis": {
+		"oneClick": false,
+		"perMachine": true,
+		"allowElevation": true,
+		"allowToChangeInstallationDirectory": true,
+		"include": "build/installer.nsh",
+		"license": "./LICENSE.md"
+	}
 }
