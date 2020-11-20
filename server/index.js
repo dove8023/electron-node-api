@@ -1,7 +1,16 @@
 const http = require("http");
 const { getEmptyPort } = require("./common");
 const httpProxy = require("http-proxy");
+const { ipcMain } = require("electron")
 
+let serverPort = 0;
+
+ipcMain.on('server-on', (event, arg) => {
+    if (!serverPort) {
+        return;
+    }
+    event.reply('server-on', serverPort);
+})
 
 const createServer = async () => {
     // 获取有效端口
@@ -33,7 +42,8 @@ const createServer = async () => {
 
     server.listen(port, () => {
         // 通知 java Server，node-api ok，并发送端口号
-        console.log('node-api is on: ' + port)
+        console.log('node-api is on: ' + port);
+        serverPort = port;
     });
 }
 
