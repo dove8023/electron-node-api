@@ -1,0 +1,30 @@
+!macro AddProtocolHandler Protocol Description
+  DeleteRegKey SHELL_CONTEXT "Software\Classes\${Protocol}"
+  WriteRegStr SHELL_CONTEXT "Software\Classes\${Protocol}" "" "${Description}"
+  WriteRegStr SHELL_CONTEXT "Software\Classes\${Protocol}" "URL Protocol" ""
+  WriteRegStr SHELL_CONTEXT "Software\Classes\${Protocol}\DefaultIcon" "" "$appExe,0"
+  WriteRegStr SHELL_CONTEXT "Software\Classes\${Protocol}\shell" "" ""
+  WriteRegStr SHELL_CONTEXT "Software\Classes\${Protocol}\shell\open" "" ""
+  WriteRegStr SHELL_CONTEXT "Software\Classes\${Protocol}\shell\open\command" "" "$appExe %1"
+!macroend
+
+
+
+
+  DeleteRegKey HKCU "Software\Classes\gapp"
+  WriteRegStr HKCU "Software\Classes\gapp" "" "gapp is using for company."
+  WriteRegStr HKCU "Software\Classes\gapp" "URL Protocol" ""
+  WriteRegStr HKCU "Software\Classes\gapp\DefaultIcon" "" "appExe},0"
+  WriteRegStr HKCU "Software\Classes\gapp\shell" "" ""
+  WriteRegStr HKCU "Software\Classes\gapp\shell\open" "" ""
+  WriteRegStr HKCU "Software\Classes\gapp\shell\open\command" "" "${appExe} %1"
+
+
+    DetailPrint "Register hxs URI Handler"
+  DeleteRegKey HKCR "hxs"
+  WriteRegStr HKCR "hxs" "" "URL:hxs"
+  WriteRegStr HKCR "hxs" "HXS NG SSO authentication Protocol" ""
+  WriteRegStr HKCR "hxs\DefaultIcon" "" "$INSTDIR\${APP_EXECUTABLE_FILENAME}"
+  WriteRegStr HKCR "hxs\shell" "" ""
+  WriteRegStr HKCR "hxs\shell\Open" "" ""
+  WriteRegStr HKCR "hxs\shell\Open\command" "" "$INSTDIR\${APP_EXECUTABLE_FILENAME} %1"

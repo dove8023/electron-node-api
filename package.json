@@ -31,7 +31,8 @@
 	},
 	"dependencies": {
 		"electron-squirrel-startup": "^1.0.0",
-		"http-proxy": "^1.18.1"
+		"http-proxy": "^1.18.1",
+		"regedit": "^3.0.3"
 	},
 	"config": {
 		"forge": {
@@ -70,11 +71,10 @@
 		}
 	},
 	"nsis": {
-		"oneClick": false,
+		"oneClick": true,
 		"perMachine": true,
 		"allowElevation": true,
 		"allowToChangeInstallationDirectory": true,
-		"include": "build/installer.nsh",
-		"license": "./LICENSE.md"
+		"include": "build/installer.nsh"
 	}
 }
