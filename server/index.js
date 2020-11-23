@@ -20,6 +20,7 @@ const createServer = async () => {
 
     // 创建poxy代理
     let proxy = httpProxy.createProxyServer({
+        selfHandleResponse: true,
         headers: {
             blockChainAuth: "dkdkdkdkdkddkdkdkdkdkdkdkdkdkdkdkdkdkdkdkdkd"
         }
@@ -32,6 +33,22 @@ const createServer = async () => {
 
         res.end('Something went wrong. And we are reporting a custom error message.');
     });
+
+    proxy.on('proxyRes', (proxyRes, req, res, options) => {
+        let body = [];
+        proxyRes.on('data', (chunk) => {
+            body.push(chunk);
+        })
+
+        proxyRes.on('end', () => {
+            body = Buffer.concat(body).toString();
+            console.log('res from proxied server: ', body);
+
+            // 检测请求状态是否过期
+
+            res.end(body);
+        })
+    })
 
     let server = http.createServer((req, res) => {
         console.log(req.headers)
