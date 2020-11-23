@@ -9,6 +9,14 @@ require('./regedit');
 //     event.reply('app-path', app.getAppPath());
 // })
 
+// 用户打开多个实例时，立即关闭
+const gotTheLock = app.requestSingleInstanceLock();
+if (!gotTheLock) {
+    app.quit();
+    return;
+}
+
+
 function createWindow() {
     // Create the browser window.
     const mainWindow = new BrowserWindow({
