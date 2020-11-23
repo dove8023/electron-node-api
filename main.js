@@ -5,10 +5,9 @@ const { createServer } = require("./server");
 require('./regedit');
 
 
-console.log(app.getAppPath())
-
-global.appPath = app.getAppPath();
-
+// ipcMain.on('app-path', (event, arg) => {
+//     event.reply('app-path', app.getAppPath());
+// })
 
 function createWindow() {
     // Create the browser window.
@@ -27,8 +26,6 @@ function createWindow() {
     mainWindow.webContents.openDevTools()
 }
 
-const fs = require("fs");
-
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
@@ -38,7 +35,6 @@ app.whenReady().then(() => {
     createServer();
 
     app.on("activate", function () {
-        console.log("yes, activate");
         // On macOS it's common to re-create a window in the app when the
         // dock icon is clicked and there are no other windows open.
         if (BrowserWindow.getAllWindows().length === 0) createWindow();

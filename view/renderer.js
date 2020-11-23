@@ -20,6 +20,14 @@ ipcRenderer.on('server-on', (event, arg) => {
 })
 
 portInterval = setInterval(() => {
-    console.log('go');
     ipcRenderer.send('server-on')
 }, 500);
+
+// 调试代码
+// ipcRenderer.on('app-path', (event, arg) => {
+//     console.log('app-path: ', arg)
+// })
+
+// setTimeout(() => {
+//     ipcRenderer.send('app-path')
+// }, 5000);

@@ -1,5 +1,5 @@
 const regedit = require("regedit");
-
+regedit.setExternalVBSLocation('resources/regedit/vbs');
 
 const HKCU_FILE = "gs";
 
@@ -15,7 +15,6 @@ regedit.createKey([
 })
 
 
-console.log()
 
 var valuesToPut = {
     [`HKCU\\SOFTWARE\\Classes\\${HKCU_FILE}`]: {

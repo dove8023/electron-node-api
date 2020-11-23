@@ -22,7 +22,6 @@ window.addEventListener('DOMContentLoaded', () => {
         "app.getAppPath()": global.appPath
     }
 
-    console.log(22222222222, global.appPath)
 
     const fs = require('fs');
     const path = require('path');

@@ -64,10 +64,19 @@
 	"build": {
 		"win": {
 			"target": "nsis",
-			"extraResources": {
-				"from": "./config.json",
-				"to": "./config.json"
-			}
+			"extraResources": [
+				{
+					"from": "./config.json",
+					"to": "./config.json"
+				},
+				{
+					"from": "node_modules/regedit/vbs",
+					"to": "regedit/vbs",
+					"filter": [
+						"**/*"
+					]
+				}
+			]
 		}
 	},
 	"nsis": {
