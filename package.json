@@ -30,7 +30,9 @@
 		"electron-builder": "^22.9.1"
 	},
 	"dependencies": {
+		"axios": "^0.21.0",
 		"electron-squirrel-startup": "^1.0.0",
+		"fabric-network": "1.4.14",
 		"http-proxy": "^1.18.1",
 		"regedit": "^3.0.3"
 	},

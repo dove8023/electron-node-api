@@ -1,0 +1,7 @@
+Transaction has been evaluated, result is: {"content":"147BB93C345F039CCC7F98338A112D62538B4D40A39ECBB6805A4C24BD97A6BF0CFD387A154E4308E1916ECEC1BD662A","key":"DjzIWDQbibNP0HhrYd2RKFB1qALvwSXir/8kFIyO550XhN07rSqIlaAUhirJYH1cX9ldf+x9oNKZqwP1uVbqm+hoe0aGQzKJFgqAFnymmmEHNGvYXfjL0UTR6KUrWchbJ7xksDsRjkapcuud/k2oYHDSOW7pDYOdr0rPq/8wYJQ="}
+
+
+package.json
+"postinstall": "electron-builder install-app-deps"
+
+
