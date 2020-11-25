@@ -1,7 +1,7 @@
 const axios = require('axios');
 const path = require("path");
 
-const dir = "./config/";
+const dir = global.dir;
 const application = require('../config/application.json');
 const userConfig = require(path.resolve(dir, "user.json"));
 

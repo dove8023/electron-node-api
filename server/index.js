@@ -1,3 +1,6 @@
+const path = require("path")
+global.dir = path.resolve(process.cwd(), 'resources/config')
+
 const http = require("http");
 const { getEmptyPort } = require("./common");
 const proxy = require("./proxy");

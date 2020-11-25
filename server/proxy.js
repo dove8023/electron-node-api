@@ -2,7 +2,7 @@ const httpProxy = require("http-proxy");
 const path = require("path");
 const query = require("./query");
 
-const dir = "./config/";
+const dir = global.dir;
 const application = require(path.resolve(dir, "application.json"));
 
 

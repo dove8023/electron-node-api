@@ -68,8 +68,8 @@
 			"target": "nsis",
 			"extraResources": [
 				{
-					"from": "./config.json",
-					"to": "./config.json"
+					"from": "./config/",
+					"to": "./config/"
 				},
 				{
 					"from": "node_modules/regedit/vbs",
