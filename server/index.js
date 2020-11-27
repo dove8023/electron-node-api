@@ -1,5 +1,5 @@
 const path = require("path")
-global.dir = path.resolve(process.cwd(), 'resources/config')
+// global.dir = path.resolve(process.cwd(), 'resources/config')
 
 const http = require("http");
 const { getEmptyPort } = require("./common");
@@ -19,7 +19,7 @@ const createServer = async () => {
         console.log('node-api is on: ' + port);
 
         // 每隔5分钟更新一次状态
-        updateAgentState();
+        updateAgentState(port);
         setInterval(() => {
             updateAgentState(port)
         }, 1000 * 60 * 5)

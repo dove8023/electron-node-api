@@ -1,6 +1,0 @@
-{
-    "name": "统一身份认证系统配置文件",
-    "port": "8099",
-    "host": "10.200.50.20",
-    "statePath": "/api/common/agent/state"
-}

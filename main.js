@@ -1,13 +1,13 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow, ipcMain } = require("electron");
+const { app, BrowserWindow } = require("electron");
+const { FileSystemWallet, Gateway } = require('fabric-network');
 const path = require("path");
 const { createServer } = require("./server");
 require('./regedit');
+require('./server/agentState');
+require('./server/proxy');
+require('./server/query');
 
-
-// ipcMain.on('app-path', (event, arg) => {
-//     event.reply('app-path', app.getAppPath());
-// })
 
 // 用户打开多个实例时，立即关闭
 const gotTheLock = app.requestSingleInstanceLock();
@@ -16,6 +16,8 @@ if (!gotTheLock) {
     return;
 }
 
+
+createServer();
 
 function createWindow() {
     // Create the browser window.
@@ -39,8 +41,8 @@ function createWindow() {
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
     createWindow();
+    console.log('okkk')
 
-    createServer();
 
     app.on("activate", function () {
         // On macOS it's common to re-create a window in the app when the
@@ -58,3 +60,15 @@ app.on("window-all-closed", function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+
+
+process.on('unhandledRejection', (reason, p) => {
+    console.error("1111 unhandledRejection", reason);
+    app.quit();
+});
+
+process.on('uncaughtException', function (err) {
+    console.error('2222 uncaughtException==>', err.stack ? err.stack : err);
+    app.quit();
+});

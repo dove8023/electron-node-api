@@ -32,7 +32,8 @@
 	"dependencies": {
 		"axios": "^0.21.0",
 		"electron-squirrel-startup": "^1.0.0",
-		"fabric-network": "1.4.14",
+		"fabric-network": "^1.4.14",
+		"fs-extra": "^9.0.1",
 		"http-proxy": "^1.18.1",
 		"regedit": "^3.0.3"
 	},
@@ -68,7 +69,7 @@
 			"target": "nsis",
 			"extraResources": [
 				{
-					"from": "./config/",
+					"from": "./resources/config/",
 					"to": "./config/"
 				},
 				{

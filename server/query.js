@@ -1,7 +1,7 @@
 const { FileSystemWallet, Gateway } = require('fabric-network');
 const path = require('path');
 
-const dir = global.dir;
+const dir = path.resolve(process.cwd(), 'resources/config')
 const ccpPath = path.resolve(dir, "connection-org1.json");
 const walletPath = path.resolve(dir, 'wallet');
 const { userId } = require(path.resolve(dir, 'user.json'));
