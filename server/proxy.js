@@ -46,11 +46,16 @@ module.exports = async function proxyFn(req, res) {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Headers", ["Authorization", "blockAuth"]);
     res.setHeader("Access-Control-Allow-Methods", ["PUT,POST,GET,DELETE,OPTIONS"]);
-
-    proxy.web(req, res, {
-        target: `http://${application.host}:${application.port}`,
-        headers: {
-            blockAuth: userBlockAuth
-        }
-    })
+    // process.env.PORTABLE_EXECUTABLE_DIR
+    console.log(req.url);
+    if (req.url == '/ping') {
+        res.end('pong: ' + process.env.PORTABLE_EXECUTABLE_DIR);
+    } else {
+        proxy.web(req, res, {
+            target: `http://${application.host}:${application.port}`,
+            headers: {
+                blockAuth: userBlockAuth
+            }
+        })
+    }
 }
