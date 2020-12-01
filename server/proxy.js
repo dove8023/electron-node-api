@@ -1,9 +1,8 @@
 const httpProxy = require("http-proxy");
 const path = require("path");
-const query = require("./query");
-
-const dir = path.resolve(process.cwd(), 'resources/config')
-const application = require(path.resolve(dir, "application.json"));
+const config = require('./config');
+const log = require('electron-log');
+const application = require(path.resolve(config.path, "application.json"));
 
 
 // 创建poxy代理
@@ -21,33 +20,14 @@ proxy.on('error', function (err, req, res) {
     res.end('Something went wrong. And we are reporting a custom error message.');
 });
 
-// proxy.on('proxyRes', (proxyRes, req, res, options) => {
-//     let body = [];
-//     proxyRes.on('data', (chunk) => {
-//         body.push(chunk);
-//     })
 
-//     proxyRes.on('end', () => {
-//         body = Buffer.concat(body).toString();
-//         console.log('res from proxied server: ', body);
-
-//         // 检测请求状态是否过期
-//         res.end(body);
-//     })
-// })
-
-
-let userBlockAuth = 'abcdefg';
 
 module.exports = async function proxyFn(req, res) {
-    // if (!userBlockAuth) {
-    //     userBlockAuth = await query();
-    // }
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Headers", ["Authorization", "blockAuth"]);
     res.setHeader("Access-Control-Allow-Methods", ["PUT,POST,GET,DELETE,OPTIONS"]);
     // process.env.PORTABLE_EXECUTABLE_DIR
-    console.log(req.url);
+    log.info(req.url)
     if (req.url == '/ping') {
         res.end('pong: ' + process.env.PORTABLE_EXECUTABLE_DIR);
     } else {

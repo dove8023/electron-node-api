@@ -1,10 +1,11 @@
 const path = require("path")
-// global.dir = path.resolve(process.cwd(), 'resources/config')
 
 const http = require("http");
 const { getEmptyPort } = require("./common");
 const proxy = require("./proxy");
 const updateAgentState = require("./agentState");
+const log = require('electron-log');
+
 
 
 const createServer = async () => {
@@ -16,7 +17,7 @@ const createServer = async () => {
     })
 
     server.listen(port, () => {
-        console.log('node-api is on: ' + port);
+        log.info('node-api is on: ' + port);
 
         // 每隔5分钟更新一次状态
         updateAgentState(port);

@@ -1,12 +1,13 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow } = require("electron");
-const { FileSystemWallet, Gateway } = require('fabric-network');
 const path = require("path");
+const config = require("./server/config")
+// 设置config路径
+config.set(app);
+
 const { createServer } = require("./server");
 require('./regedit');
-require('./server/agentState');
-require('./server/proxy');
-require('./server/query');
+const log = require('electron-log');
 
 
 // 用户打开多个实例时，立即关闭
@@ -15,6 +16,8 @@ if (!gotTheLock) {
     app.quit();
     return;
 }
+
+
 
 
 createServer();
@@ -41,8 +44,6 @@ function createWindow() {
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
     createWindow();
-    console.log('okkk')
-
 
     app.on("activate", function () {
         // On macOS it's common to re-create a window in the app when the
