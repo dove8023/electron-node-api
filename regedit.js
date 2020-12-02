@@ -32,7 +32,7 @@ var valuesToPut = {
     [`HKCU\\SOFTWARE\\Classes\\${HKCU_FILE}\\shell\\open\\command`]: {
         '@': {
             type: 'REG_DEFAULT',
-            value: `"${process.cwd()}\\gs-app-test.exe" \"--url=%1\"`
+            value: `"${process.cwd()}\\gs-app.exe" \"--url=%1\"`
         }
     },
 }
