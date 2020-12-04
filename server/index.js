@@ -41,7 +41,6 @@ const createServer = async () => {
                 result = await query();
                 resData.data = result;
             } catch (error) {
-                log.error(error);
                 console.log(error);
                 resData.code = 101;
                 resData.message = "区块链网络请求错误";

@@ -66,10 +66,12 @@ app.on("window-all-closed", function () {
 
 process.on('unhandledRejection', (reason, p) => {
     console.error("1111 unhandledRejection", reason);
-    app.quit();
+    log.error(reason)
+    // app.quit();
 });
 
 process.on('uncaughtException', function (err) {
     console.error('2222 uncaughtException==>', err.stack ? err.stack : err);
-    app.quit();
+    log.error(err)
+    // app.quit();
 });

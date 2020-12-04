@@ -65,6 +65,13 @@
 			]
 		}
 	},
+	"extraResources": [
+		{
+			"from": "./resources/config/",
+			"to": "./config/"
+		}
+	],
+	"asar": false,
 	"build": {
 		"win": {
 			"target": "nsis",

@@ -20,14 +20,24 @@ async function getFabricAuth() {
     // Create a new gateway for connecting to our peer node.
     const gateway = new Gateway();
     await gateway.connect(ccpPath, { wallet, identity: 'user1', discovery: { enabled: true, asLocalhost: false } });
-
+    console.log('gateway connect success.')
+    
     // Get the network (channel) our contract is deployed to.
     const network = await gateway.getNetwork('mychannel');
 
     // Get the contract from the network.
     const contract = network.getContract('identity');
 
-    let result = await contract.submitTransaction('getUserIdentity', userId);
+    console.log('create the contract.')
+    let result;
+
+    try {
+        result = await contract.submitTransaction('getUserIdentity', userId);   
+        console.log('submit transaction success.')
+    } catch (error) {
+        throw new Error("submit transaction Error.")
+    }
+
     await gateway.disconnect();
 
     result = result.toString();
