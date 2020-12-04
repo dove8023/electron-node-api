@@ -2,7 +2,6 @@ const http = require("http");
 const { getEmptyPort } = require("./common");
 const updateAgentState = require("./agentState");
 const log = require('electron-log');
-const query = require("./query");
 
 
 const createServer = async () => {
@@ -38,7 +37,7 @@ const createServer = async () => {
 
             let result;
             try {
-                result = await query();
+                result = 'no fabric';
                 resData.data = result;
             } catch (error) {
                 console.log(error);
