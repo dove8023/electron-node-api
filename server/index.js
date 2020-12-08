@@ -11,7 +11,7 @@ const createServer = async () => {
 
     let server = http.createServer(async (req, res) => {
         res.setHeader("Access-Control-Allow-Origin", "*");
-        res.setHeader("Access-Control-Allow-Headers", ["Authorization", "blockAuth"]);
+        res.setHeader("Access-Control-Allow-Headers", ["Authorization", "auth"]);
         res.setHeader("Access-Control-Allow-Methods", ["PUT,POST,GET,DELETE,OPTIONS"]);
         console.log(req.url);
 

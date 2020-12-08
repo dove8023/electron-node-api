@@ -1,5 +1,5 @@
 {
-	"name": "gs-app",
+	"name": "bcagent",
 	"version": "1.0.0",
 	"description": "GS using for the login system.",
 	"main": "main.js",
@@ -65,21 +65,11 @@
 			]
 		}
 	},
-	"extraResources": [
-		{
-			"from": "./resources/config/",
-			"to": "./config/"
-		}
-	],
 	"asar": false,
 	"build": {
 		"win": {
 			"target": "nsis",
 			"extraResources": [
-				{
-					"from": "./resources/config/",
-					"to": "./config/"
-				},
 				{
 					"from": "node_modules/regedit/vbs",
 					"to": "regedit/vbs",
@@ -87,7 +77,8 @@
 						"**/*"
 					]
 				}
-			]
+			],
+			"icon": "logo.png"
 		}
 	},
 	"nsis": {

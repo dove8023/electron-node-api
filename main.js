@@ -1,9 +1,18 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow } = require("electron");
 const path = require("path");
+const fs = require("fs");
+
 const config = require("./server/config")
 // 设置config路径
 config.set(app);
+
+if (!fs.existsSync(path.resolve(config.path, "user.json"))) {
+    console.log('not has user.json')
+    app.quit();
+    return;
+}
+
 
 const { createServer } = require("./server");
 require('./regedit');
@@ -43,7 +52,7 @@ function createWindow() {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-    createWindow();
+    // createWindow();
 
     app.on("activate", function () {
         // On macOS it's common to re-create a window in the app when the

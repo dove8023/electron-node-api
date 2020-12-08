@@ -1,7 +1,7 @@
 const regedit = require("regedit");
 regedit.setExternalVBSLocation('resources/regedit/vbs');
 
-const HKCU_FILE = "gs";
+const HKCU_FILE = "bcagent";
 
 regedit.createKey([
     `HKCU\\SOFTWARE\\Classes\\${HKCU_FILE}`,
@@ -19,7 +19,7 @@ regedit.createKey([
 var valuesToPut = {
     [`HKCU\\SOFTWARE\\Classes\\${HKCU_FILE}`]: {
         'defalut': {
-            value: "Open GS login.",
+            value: "Open bcagent",
             type: 'REG_DEFAULT'
         },
         "URL Protocol": {
@@ -32,7 +32,7 @@ var valuesToPut = {
     [`HKCU\\SOFTWARE\\Classes\\${HKCU_FILE}\\shell\\open\\command`]: {
         '@': {
             type: 'REG_DEFAULT',
-            value: `"${process.cwd()}\\gs-app.exe" \"--url=%1\"`
+            value: `"${process.cwd()}\\bcagent.exe" \"--url=%1\"`
         }
     },
 }
